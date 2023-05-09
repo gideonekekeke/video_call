@@ -5,12 +5,14 @@ const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "*",
+		origin: "https://gideonpeer2peer.netlify.app",
 	},
 });
 const { ExpressPeerServer } = require("peer");
 const opinions = {
 	debug: true,
+	allow_discovery: true,
+	origins: ["https://gideonpeer2peer.netlify.app"],
 };
 
 app.use("/peerjs", ExpressPeerServer(server, opinions));
